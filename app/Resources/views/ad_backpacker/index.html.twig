@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Share&Go{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { font: 18px/1.5 sans-serif; }
+
+</style>
+
+<div class="example-wrapper">
+    <div class="verteco" style="background-image: url({{ asset('image/sinscrire.png') }});">
+   <div class="logoco ">
+       <h1>Inscription </h1>
+       <div>
+       <div class="active arrondi"><a href="/add_backpacker"><p>Voyageur</p></a></div>
+           <div class="off arrondi"><a href="/add_host"><p>Hôtes</p></a></div>
+       </div>
+   </div>
+        {{ form(form) }}
+    </div>
+    <div class="versinscrit">
+        <p>Déjà inscrit</p>
+        <a href="/login">Créer un compte</a>
+    </div>
+
+</div>
+{% endblock %}

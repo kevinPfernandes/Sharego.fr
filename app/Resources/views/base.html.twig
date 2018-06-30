@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WJQ9JK2');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <title>{% block title %}Share&Go{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="../web/image/picto-logo-vert.png">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    {% endblock %}
+</head>
+
+<body>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WJQ9JK2');</script>
+<!-- End Google Tag Manager -->
+<div class="taille">
+    <!-- début de la nav-->
+    <nav class="burger">
+        <a href="/"><img class="logo" src="{{ asset('image/picto-logo-blanc.svg') }}"></a>
+        <a href="#" class="burger__button" id="burger-button">
+            <span class="burger__button__icon"></span>
+        </a>
+
+        <ul class="burger__menu">
+            {% if is_granted('ROLE_USER') == true %}
+            <li><a href="/profil">Mon Profil</a></li>
+            <li class="souligne"><a href="/logout">Déconnection</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') == false %}
+            <li><a href="/add_host">Devenir hôte</a></li>
+            {% endif %}
+            <li><a href="/jobs">Jobs</a></li>
+            <li><a href="/articles">Chroniques</a></li>
+            {% if is_granted('ROLE_USER') == false %}
+            <li class="souligne"><a href="#">Voir la demo</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_USER') == false %}
+            <li><a href="/add_backpacker">M'inscrire</a></li>
+            <li class="souligne"><a href="/login">Me connecter</a></li>
+            {% endif %}
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">CGU </a></li>
+            <li><a href="#">Politique de confidentialité & gestion des coockies </a></li>
+        </ul>
+
+    </nav>
+    <!-- fin de la nav -->
+</div>
+<div class="ecranpc">
+    <img src="{{ asset('image/Home.jpg') }}">
+    <p>Notre site n’est pas devant son bureau, n’hésitez pas à le consulter sur la route avec votre mobile</p>
+</div>
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+        <script src="{{asset('js/app.js') }}"></script>
+{% endblock %}
+</body>
+
+</html>
