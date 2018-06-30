@@ -30,6 +30,15 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function searchArticles($title) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM AppBundle:Article p WHERE p.title LIKE :title'
+            )
+            ->setParameter('title', '%' . $title . '%')
+            ->getResult();
+    }
+
 
 
     /*

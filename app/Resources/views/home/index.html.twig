@@ -15,12 +15,27 @@
             <source src="{{ asset('../web/image/Backgroundmobil.mp4') }}" type="video/mp4">
         </video>
         <h1 class=" col-4">Vivez des expériences uniques à travers la culture locale</h1>
-        <form class="form-inline mt-2 mt-md-0" method="get" action="">
-            <input class="form-control mr-sm-2" type="text" placeholder="" aria-label="Search">
+        {#<form class="form-inline mt-2 mt-md-0" method="get" action="">
+            <input class="form-control mr-sm-2" type="text" placeholder="type some text" aria-label="Search">
             <button type="submit" class="loupe"><img src="{{ asset('image/search.svg') }}"> </button>
-        </form>
-
+        </form>#}
+        {{ render(controller(
+            'AppBundle\\Controller\\HomeController::searchBarAction'
+        )) }}
     </div>
+
+
+    {# exemple d'affichage suite à recherche #}
+    <div style="display: block; background-color: yellow">
+        {% if allResults is defined %}
+            {% for item in allResults %}
+                <p style="margin: 10px 5px">{{ item.title }}</p>
+                <p style="margin: 10px 5px">{{ item.description }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {# end of exemple d'affichage #}
+
     <!--fin de la div vidéo-->
     <!-- début de la partie blanche -->
         <div class="blanc">
@@ -33,7 +48,7 @@
                         {% else %}
                             <img src="{{ asset('image/peru.jpg' ) }}" class="arronjob">
                         {% endif %}
-                    <p>{{  job.titre}}</p>
+                    <p>{{  job.title}}</p>
                     <p>{{ job.type }}</p>
                     </a>
                 </div>

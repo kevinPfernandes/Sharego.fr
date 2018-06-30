@@ -30,6 +30,16 @@ class JobRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
+    public function searchJobs($title) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM AppBundle:Job p WHERE p.title LIKE :title'
+            )
+            ->setParameter('title', '%' . $title . '%')
+            ->getResult();
+    }
+
 //    /**
 //     * @return TypeService[] Returns an array of TypeService objects
 //     */

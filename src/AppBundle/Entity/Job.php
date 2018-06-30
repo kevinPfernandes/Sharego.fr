@@ -12,32 +12,33 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 class Job
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="id", type="integer")
      */
     public $id;
 
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     */
+    public $title;
 
     /**
      * @return mixed
      */
-    public function getTitre()
+    public function getTitle()
     {
-        return $this->titre;
+        return $this->title;
     }
 
     /**
-     * @param mixed $titre
+     * @param mixed $title
      */
-    public function setTitre($titre)
+    public function setTitle($title)
     {
-        $this->titre = $titre;
+        $this->title = $title;
     }
-    /**
-     * @ORM\Column(type="string", length=255,nullable=true)
-     */
-    public $titre;
+
     /**
      * @ORM\ManyToOne(targetEntity="Users", inversedBy="job")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
